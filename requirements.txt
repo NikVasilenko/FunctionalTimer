@@ -1,0 +1,7 @@
+﻿pytest
+customtkinter
+time
+unittest.mock
+threading
+pygame
+pillow
