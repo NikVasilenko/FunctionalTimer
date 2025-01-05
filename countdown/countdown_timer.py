@@ -5,21 +5,23 @@ import pygame
 class CountdownTimer(ctk.CTkFrame):
     def __init__(self, parent):
         super().__init__(parent)
+
+        self.font = "Helvetica"
         # Labels and Entry fields for minutes and seconds
-        self.minutes_label = ctk.CTkLabel(self, font=("Helvetica", 20), text="Minutes:")
+        self.minutes_label = ctk.CTkLabel(self, font=(self.font, 20), text="Minutes:")
         self.minutes_label.pack(pady=5)
 
-        self.minutes_entry = ctk.CTkEntry(self, font=("Helvetica", 20))
+        self.minutes_entry = ctk.CTkEntry(self, font=(self.font, 20))
         self.minutes_entry.pack(pady=5)
 
-        self.seconds_label = ctk.CTkLabel(self, font=("Helvetica", 20), text="Seconds:")
+        self.seconds_label = ctk.CTkLabel(self, font=(self.font, 20), text="Seconds:")
         self.seconds_label.pack(pady=5)
 
-        self.seconds_entry = ctk.CTkEntry(self, font=("Helvetica", 20))
+        self.seconds_entry = ctk.CTkEntry(self, font=(self.font, 20))
         self.seconds_entry.pack(pady=5)
 
         # Label to display the countdown time
-        self.time_label = ctk.CTkLabel(self, font=("Helvetica", 30), text="Time: 00:00:00")
+        self.time_label = ctk.CTkLabel(self, font=(self.font, 30), text="Time: 00:00:00")
         self.time_label.pack(pady=10)
 
         # Frame for bottom buttons
@@ -94,7 +96,7 @@ class CountdownTimer(ctk.CTkFrame):
     def play_alarm(self):
         #play alarm sound indefinitely and show the pop-up window
         pygame.mixer.init()
-        pygame.mixer.music.load("alarm.wav")
+        pygame.mixer.music.load("static/sound/alarm.wav")
         pygame.mixer.music.play(loops=-1)
 
         self.alarm_popup = ctk.CTkToplevel(self)

@@ -1,5 +1,5 @@
 **Functional Timer**  
-**Video Demo:**  https://youtu.be/St5K\_DPYBwc  
+**Video Demo:**  https://youtu.be/St5K_DPYBwc
 **Description:** This project represents my take on the timer application. I wanted to combine the functionality of a regular timer and the interval one in one app. I was pursuing an experience building it by myself with aid from documentation and google research. I wanted to use OOP for the project to practice class creations and usage, so in the end I modified the project to be testable and accepted by CS50 submit functionality. I am proud overall of my achievements although I spend a lot of time researching the options for testing GUI with pytest and creation of GUI elements themselves.  
 	I used just 4 .py files and additional files (images and music) in a single folder. The main, project.py, file just calls the classes from other files and displayes them, defaulting one of the modules with navigation buttons at the bottom of the app.  
 	1 module is the Time module. Displayed the actual time in 12H format using the time library.  

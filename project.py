@@ -1,7 +1,7 @@
 import customtkinter as ctk
-from CountdownTimer import CountdownTimer
-from Time import TimeFrame
-from Workout import WorkoutFrame
+from countdown.countdown_timer import CountdownTimer
+from clock.time import TimeFrame
+from workout.workout import WorkoutFrame 
 
 
 def create_menu(parent, main_frame, show_time, show_countdown, show_workout):

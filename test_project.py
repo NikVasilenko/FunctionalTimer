@@ -1,9 +1,9 @@
 import pytest
 from unittest.mock import MagicMock, patch
 import customtkinter as ctk
-from CountdownTimer import CountdownTimer
-from Time import TimeFrame
-from Workout import WorkoutFrame
+from countdown.countdown_timer import CountdownTimer
+from clock.time import TimeFrame
+from workout.workout import WorkoutFrame 
 from project import create_menu, clear_widgets, main
 
 

@@ -5,7 +5,7 @@ import time
 class TimeFrame(ctk.CTkFrame):
     def __init__(self, parent):
         super().__init__(parent)
-        self.label = ctk.CTkLabel(self, text="This is Time Frame!")
+        self.label = ctk.CTkLabel(self)
         self.label.pack(pady=20)
         self.update_time()
 

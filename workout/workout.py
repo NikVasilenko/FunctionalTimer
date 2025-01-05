@@ -11,10 +11,10 @@ class WorkoutFrame(ctk.CTkFrame):
         self.parent = parent
 
         #Load button icons
-        on = Image.open("sound_.png")
-        off = Image.open("sound_no.png")
-        play = Image.open("play_button.png")
-        pause = Image.open("pause_button.png")
+        on = Image.open("static/img/sound_.png")
+        off = Image.open("static/img/sound_no.png")
+        play = Image.open("static/img/play_button.png")
+        pause = Image.open("static/img/pause_button.png")
         self.sound_on = ctk.CTkImage(on)
         self.sound_off = ctk.CTkImage(off)
         self.resume_b = ctk.CTkImage(play)
@@ -22,9 +22,9 @@ class WorkoutFrame(ctk.CTkFrame):
 
         pygame.mixer.init()
         #Load the music
-        self.end_workout_music = "alarm.wav"
-        self.rest_music = "rest.wav"
-        self.work_music = "work.wav"
+        self.end_workout_music = "static/sound/alarm.wav"
+        self.rest_music = "static/sound/rest.wav"
+        self.work_music = "static/sound/work.wav"
 
         # Variables for settings
         self.work_time = 0
@@ -47,29 +47,29 @@ class WorkoutFrame(ctk.CTkFrame):
 
         # Timer display label
         self.time_label = ctk.CTkLabel(self, text="00:00", font=("Helvetica", 50))
-        self.time_label.place(relx= 0.5, rely= 0.5, anchor="center")
+        self.time_label.place(relx=0.5, rely=0.5, anchor="center")
 
         # Status label (Work/Rest)
         self.status_label = ctk.CTkLabel(self, text="Get Ready!", font=("Helvetica", 20))
-        self.status_label.place(relx= 0.5, rely = 0.8, anchor="center")
+        self.status_label.place(relx=0.5, rely=0.8, anchor="center")
 
         #Round number label
         self.round_status = ctk.CTkLabel(self, text="")
-        self.round_status.place(relx=0.5, rely= 0.3, anchor="center")
+        self.round_status.place(relx=0.5, rely=0.3, anchor="center")
 
         # Start/Stop buttons with respectfull frame for ordering purposes
         self.button_frame = ctk.CTkFrame(self)
         self.button_frame.pack(side= ctk.BOTTOM, fill= ctk.X)
 
         self.start_button = ctk.CTkButton(self.button_frame, text="Start", command=self.start_thread)
-        self.start_button.pack(side=ctk.LEFT, padx= 10, pady= 10)
+        self.start_button.pack(side=ctk.LEFT, padx=10, pady=10)
 
         self.stop_button = ctk.CTkButton(self.button_frame, text="Stop", command=self.stop)
-        self.stop_button.pack(side=ctk.RIGHT, padx = 10, pady=10)
+        self.stop_button.pack(side=ctk.RIGHT, padx=10, pady=10)
         
         # Controll Buttons
         self.mute_button = ctk.CTkButton(self, text="", command=self.mute, image=self.sound_on, height=10, width=10)
-        self.mute_button.place(relx= 0.9, rely=0.025)
+        self.mute_button.place(relx=0.9, rely=0.025)
 
 
         self.pause_button = ctk.CTkButton(self, text="", command=self.t_pause, image=self.pause_b, height=10, width=10)
@@ -123,8 +123,8 @@ class WorkoutFrame(ctk.CTkFrame):
     def start(self):
         self.stop_loop = False
 
-        self.pause_button.place(relx = 0.88, rely= 0.6)
-        self.resume_button.place(relx = 0.03, rely= 0.6)
+        self.pause_button.place(relx=0.88, rely=0.6)
+        self.resume_button.place(relx=0.03, rely=0.6)
 
         
         if not self.t_is_paused:
@@ -158,7 +158,6 @@ class WorkoutFrame(ctk.CTkFrame):
             self.status_label.configure(text=f"{self.current_phase.title()}")
             self.round_status.configure(text=f"{self.rounds_left}")
 
-        
             if self.current_phase == "work":
                 self.update_color(bg="green")
             else:
@@ -170,8 +169,8 @@ class WorkoutFrame(ctk.CTkFrame):
 
         if self.stop_loop:
             return
-
         
+                
         if self.remaining_seconds == 0:
             if self.current_phase == "work":
                 self.current_phase = "rest"
@@ -224,14 +223,14 @@ class WorkoutFrame(ctk.CTkFrame):
         self.start_button.configure(state="normal")
 
 
-    def play_music(self, file, n=None):
+    def play_music(self, file, loop=None):
         """Manages the music file loading, and playing."""
-        if n is None:
-            n = -1
+        if loop is None:
+            loop = -1
         if not self.is_muted:
             pygame.mixer.music.stop() 
             pygame.mixer.music.load(file)
-            pygame.mixer.music.play(loops=n)
+            pygame.mixer.music.play(loops=loop)
     
     def mute(self):
         """Mute or unmute the sound."""
